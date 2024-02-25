@@ -1,0 +1,8 @@
+{{>header}}
+<h1>Products</h1>
+    <ul>
+        {{#each allProducts}}
+            <li>Name: {{name}}<br>Price: {{price}}$<br>Category: {{category}}</li>
+        {{/each}}
+    </ul>
+{{>footer}}
