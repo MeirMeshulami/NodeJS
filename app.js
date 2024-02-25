@@ -8,6 +8,7 @@ const productRouter = require('./routes/product');
 const bodyParser = require('body-parser');
 const db = require('./utils/database');
 const product = require('./models/product');
+const productImgs=require('./models/productImages');
 
 
 const Users = [];
@@ -94,7 +95,9 @@ app.use((req , res, next) =>{
 app.listen(PORT, async () =>{
     try{
         await db.authenticate();
-        await product.sync();
+        await product.sync(); 
+        await productImgs.sync();
+              
         console.log(chalk.bgYellowBright(`Server is running on Port ${PORT}, Succssfully connected to Databsae`));
     }catch(e){
         console.log(chalk.bgYellowBright(`Server is running on Port ${PORT}, Could not connected to Databsae`));
