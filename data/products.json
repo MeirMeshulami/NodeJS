@@ -2,60 +2,74 @@
   "id": 1,
   "name": "Dell Inspiron 15",
   "description": "Dell Inspiron 15 laptop screen 15.6 Full HD 120Hz Intel Core i5-1335U 13th generation processor, 512GB SSD drive, 16GB DDR4 memory, Intel Iris Xe Graphics graphics accelerator",
+  "quantity": 10,
   "price": 3990
 }, {
   "id": 2,
   "name": "Galaxy A54 5G 8GB 128GB Samsung",
   "description": "Galaxy A54 5G 8GB 128GB Samsung cell phone in black",
+  "quantity": 15,
   "price": 1349
 }, {
   "id": 3,
   "name": "PC IVORY gaming desktop",
+  "quantity": 20,
   "description": "IVORY gaming desktop including an i7-12700F Intel processor, 32GB memory, 1TB SSD drive, ASUS board, approx. RTX 3050 8GB monitor",
   "price": 7409
 }, {
   "id": 4,
   "name": "Sony PlayStation 5 Blu-ray Edition 1TB PS5 SLIM",
+  "quantity": 30,
   "description": "Play like you've never played before, the same overwhelming power in a slim and innovative design! With PS5 in Blu-ray edition, players get powerful game technology, inside a new SLIM console with a compact and elegant design",
   "price": 2100
 }, {
   "id": 5,
   "name": "WD portable external hard disk",
   "description": "WD portable external hard disk from the Elements Portable series model WDBU6Y0020BBK with a volume of 2TB with a 2.5 inch USB3.0 connection without the need to connect an external power supply",
-  "price": 360
+  "price": 360,
+  "quantity": 50
+
 }, {
   "id": 6,
   "name": "OnePlus Nord N20 SE",
   "description": "OnePlus Nord N20 SE 128GB smartphone in black color",
-  "price": 565
+  "price": 565,
+  "quantity": 60
 }, {
   "id": 7,
   "name": "Steelseries Arctis 7+ Wireless",
   "description": "Premium quality wireless gaming headsets, from the SteelSeries Arctis series - designed for PC with next-generation wireless audio and also compatible with PlayStation 4, PlayStation 5, PC, Android, and Nintendo Switch.",
-  "price": 537
+  "price": 537,
+  "quantity": 25
 }, {
   "id": 8,
   "name": "Apple MacBook Air 2022",
   "description": "Laptop computer ''13.6 Apple MacBook Air 2022 Z15Y000QW Apple M2 chip in Starlight color, 256GB SSD drive, 8GB memory",
-  "price": 6000
+  "price": 6000,
+  "quantity": 35
+
 }, {
   "id": 9,
   "name": "Akaso V50 X",
   "description": "Extreme V50 X camera from AKASO with a 20MP sensor includes a wide accessory kit with facilities for every use including remote control and spare battery. You can control your camera using an app and a remote thanks to the EIS image stabilizer you will get smooth movement in videos without the need for a gimbal, and with the app on your phone you can edit and share photos with videos directly from the camera without the need for a computer",
-  "price": 493
+  "price": 493,
+  "quantity": 45
 }, {
   "id": 10,
   "name": "Computer memory Kingston Fury Beast DDR4",
   "description": "Memory for a Kingston desktop computer Fury Beast series model KF432C16BBK2/16 with a volume of 2X8GB type DDR4 at a speed of 3200MHz",
-  "price": 205
+  "price": 205,
+  "quantity": 55
 }, {
   "id": 11,
   "name": "MSI MAG A850GL PCIE5 80 PLUS",
   "description": "Active and modular power supply MSI model MAG A850GL PCIE5 with 850W power and 80Plus Gold efficiency, including a 12VHPWR connection for modern video cards",
-  "price": 825
+  "price": 825,
+  "quantity": 65
 }, {
   "id": 12,
   "name": "Printer-Fax Brother MFC-J1010DWZU1",
   "description": "Compact printer combined fax Brother MFC-J1010DWZU. Print in vivid colors from anywhere in the home, via WLAN - conveniently from your PC, smartphone or tablet. With the 20-sheet automatic document feeder you can copy, fax or scan your documents quickly and easily.",
-  "price": 495
+  "price": 495,
+  "quantity": 35
 }]
