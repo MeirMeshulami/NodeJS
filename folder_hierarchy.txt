@@ -1,0 +1,61 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 8A4E-455D
+C:.
+¦   .gitignore
+¦   app.js
+¦   folder_hierarchy.txt
+¦   index.html
+¦   package-lock.json
+¦   package.json
+¦   README.md
+¦   
++---config
+¦       config.json
+¦       
++---controllers
+¦       Product.js
+¦       
++---data
+¦       productImages.json
+¦       products.json
+¦       
++---migrations
+¦       20240303184700-create-product-images.js
+¦       
++---models
+¦       index.js
+¦       product.js
+¦       productimages.js
+¦       
++---public
+¦       script.js
+¦       style.css
+¦       
++---routes
+¦       product.js
+¦       
++---seeders
+¦       20240303180444-addProducts.js
+¦       20240303180653-addProductImages.js
+¦       
++---utils
+¦       database.js
+¦       
++---views
+    ¦   404.hbs
+    ¦   about.hbs
+    ¦   home.hbs
+    ¦   products.hbs
+    ¦   register.hbs
+    ¦   singleUser.hbs
+    ¦   users.hbs
+    ¦   
+    +---partials
+    ¦       footer.hbs
+    ¦       header.hbs
+    ¦       
+    +---products
+            all.hbs
+            search.hbs
+            single.hbs
+            
