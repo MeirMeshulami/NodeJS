@@ -1,0 +1,42 @@
+[
+  {
+      "id": 1,
+      "name": "Laptops"
+  },
+  {
+      "id": 2,
+      "name": "Smartphones"
+  },
+  {
+      "id": 3,
+      "name": "Desktops"
+  },
+  {
+      "id": 4,
+      "name": "Gaming Consoles"
+  },
+  {
+      "id": 5,
+      "name": "Storage & Drives"
+  },
+  {
+      "id": 6,
+      "name": "Accessories"
+  },
+  {
+      "id": 7,
+      "name": "Cameras"
+  },
+  {
+      "id": 8,
+      "name": "Printers & Scanners"
+  },
+  {
+      "id": 9,
+      "name": "Power Supplies"
+  },
+  {
+      "id": 10,
+      "name": "Headphones & Audio Devices"
+  }
+]

@@ -3,19 +3,34 @@
 
 
 <div>All Products</div>
-<ul>
-  {{#each products}}
-    <li>
-      id: {{this.id}}<br>
-      name: {{this.name}}<br>
-      price: {{this.price}}<br>
-      description: {{this.description}}<br>
-      quantity: {{this.quantity}}
-    </li>
-    
-  {{/each}} 
-</ul>
 
+<div class="ui four cards">
+  {{#each products}}
+  <div class="card">
+    <div class="image">
+      <img>
+    </div>
+<div class="content">
+    <a class="header">{{this.name}}</a>
+    <div class="meta">
+      <span class="date">Created on {{this.createdAt}}</span>
+      <span class="price">Price: ${{this.price}}</span>
+    </div>
+    <div class="summary">
+        {{this.description}}
+    </div>
+</div>
+    <div class="extra">
+      Rating:
+      <div class="ui star rating" data-rating="{{this.rating}}"></div>
+    </div>
+    <div class="extra content">
+      <button class="ui primary button">buy</button>
+  </div>
+  </div>
+
+  {{/each}} 
+  </div>
 
 
 

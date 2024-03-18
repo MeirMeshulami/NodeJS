@@ -8,6 +8,8 @@ const productRouter = require('./routes/product');
 const bodyParser = require('body-parser');
 const db = require('./utils/database');
 const Product = require('./models/product');
+const ProductImage = require('./models/productimages');
+
 
 const Users = [];
 
@@ -20,10 +22,10 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // START  ---> / --> middleware (console.log) --> get (path /) --> return resposnse --> END
 
-app.use((request, response, next) =>{
-    console.log(chalk.blueBright(`Requested URL: ${request.url}`));
-    next();
-})
+// app.use((request, response, next) =>{
+//     console.log(chalk.blueBright(`Requested URL: ${request.url}`));
+//     next();
+// })
 
 app.use('/products', productRouter);
 
@@ -96,6 +98,7 @@ app.listen(PORT, async () =>{
         try{
             await db.authenticate();
             await Product.sync();
+            await ProductImage.sync();
             console.log(chalk.bgYellowBright(`Server is running on Port ${PORT}, Succssfully connected to Databsae`));
         }catch(e){
             console.log(chalk.bgRedBright(`Server is running on Port ${PORT}, Could not connected to Databsae`));

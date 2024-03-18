@@ -1,0 +1,50 @@
+[
+  {
+      "productId": 1,
+      "categoryId": "Laptops"
+  },
+  {
+      "productId": 2,
+      "categoryId": "Smartphones"
+  },
+  {
+      "productId": 3,
+      "categoryId": "Desktops"
+  },
+  {
+      "productId": 4,
+      "categoryId": "Gaming Consoles"
+  },
+  {
+      "productId": 5,
+      "categoryId": "Storage & Drives"
+  },
+  {
+      "productId": 6,
+      "categoryId": "Smartphones"
+  },
+  {
+      "productId": 7,
+      "categoryId": "Accessories"
+  },
+  {
+      "productId": 8,
+      "categoryId": "Laptops"
+  },
+  {
+      "productId": 9,
+      "categoryId": "Cameras"
+  },
+  {
+      "productId": 10,
+      "categoryId": "Accessories"
+  },
+  {
+      "productId": 11,
+      "categoryId": "Power Supplies"
+  },
+  {
+      "productId": 12,
+      "categoryId": "Printers & Scanners"
+  }
+]

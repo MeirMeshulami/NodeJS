@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "admin",
-    "database": "ivory",
+    "database": "store",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

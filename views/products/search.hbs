@@ -1,36 +1,47 @@
-{{> header}}
+{{>header}}
+<h1>{{title}}</h1>
 
-<h2>Search result:</h2>
-
-{{#if products.length}}
-  <div class="ui four cards">
-    {{#each products}}
-    <div class="card">
-      <div class="image">
-        <img>
-      </div>
-      <div class="content">
-        <a class="header">{{this.name}}</a>
-        <div class="meta">
-          <span class="date">Created on {{this.createdAt}}</span>
-          <span class="price">Price: ${{this.price}}</span>
-        </div>
-        <div class="summary">
-          {{this.description}}
-        </div>
-      </div>
-      <div class="extra">
-        Rating:
-        <div class="ui star rating" data-rating="{{this.rating}}"></div>
-      </div>
-      <div class="extra content">
-        <button class="ui primary button">buy</button>
-      </div>
+<form method="GET">
+<div class="ui huge form">
+    <div class="field">
+      <input name="q" placeholder="Enter Product Name" type="text" />
     </div>
-    {{/each}}
-  </div>
-{{else}}
-  <p>No results found.</p>
-{{/if}}
+  <button class="ui submit button">Search</button>
+</div>
+</form>
 
-{{> footer}}
+<div class="ui four cards">
+  {{#each products}}
+  <div class="card">
+    <div class="image">
+      <img src="{{this.url}}" alt="{{this.name}}" />
+    </div>
+<div class="content">
+    <a class="header">{{this.name}}</a>
+    <div class="meta">
+      <span class="date">Created on {{this.createdAt}}</span>
+      <span class="price">Price: ${{this.price}}</span>
+    </div>
+    <div class="summary">
+        {{this.description}}
+    </div>
+    <div class="category-name">
+        {{this.categoryName}}
+    </div>
+</div>
+    <div class="extra">
+      Rating:
+      <div class="ui star rating" data-rating="{{this.rating}}"></div>
+    </div>
+    <div class="extra content">
+      <button class="ui primary button">buy</button>
+  </div>
+  </div>
+
+  {{/each}} 
+  </div>
+
+
+
+{{>footer}}
+

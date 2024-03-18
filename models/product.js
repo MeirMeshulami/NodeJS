@@ -1,12 +1,15 @@
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/database');
+const ProductImages = require('../models/productimages'); 
+const Category = require('../models/category'); 
+const ProductCategories = require('../models/productCategories');
 
 const Product = sequelize.define('Product', {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true, 
-    primaryKey: true  // unique + index
+    autoIncrement: true,
+    primaryKey: true
   },
   name: {
     type: DataTypes.STRING
@@ -21,7 +24,15 @@ const Product = sequelize.define('Product', {
     type: DataTypes.INTEGER
   }
 }, {
-  // Other model options go here
 });
+
+// Product has many ProductImages
+Product.hasMany(ProductImages, { foreignKey: 'productId' });
+
+
+Product.hasMany(ProductCategories, { foreignKey: 'productId' });
+
+// // Product belongs to many Category through ProductCategories
+// Product.belongsToMany(Category, { through: 'ProductCategories' });
 
 module.exports = Product;
