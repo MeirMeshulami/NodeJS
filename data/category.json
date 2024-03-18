@@ -33,10 +33,14 @@
   },
   {
       "id": 9,
-      "name": "Power Supplies"
+      "name": "Extreme"
   },
   {
       "id": 10,
       "name": "Headphones & Audio Devices"
+  },
+  {
+    "id": 11,
+      "name": "Power Supplies"
   }
 ]

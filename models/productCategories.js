@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/database');
 const Category = require('../models/category');
-const Product=require('../models/product');
 
 const ProductCategories = sequelize.define('ProductCategories', {
   productId: {
@@ -20,10 +19,6 @@ const ProductCategories = sequelize.define('ProductCategories', {
   ]
 });
 
-// // ProductCategories belongs to Product
-// ProductCategories.belongsTo(Product, { foreignKey: 'productId' });
-
-// ProductCategories belongs to Category
 ProductCategories.belongsTo(Category ,{ foreignKey: 'id' });
 
 module.exports = ProductCategories;

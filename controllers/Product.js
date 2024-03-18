@@ -1,7 +1,6 @@
 const Product = require('../models/product');
 const ProductImages = require('../models/productimages');
 const Category = require('../models/category'); 
-const ProductCategories = require('../models/productCategories'); 
 
 const sequelize = require('sequelize');
 const getRandomRating = () => {
@@ -21,16 +20,15 @@ const search = async (request, response) => {
             },
             include: [
                 { model: ProductImages, required: false, attributes: ['url'] }
-                ,{ model: ProductCategories, required: false, attributes: ['productId'] }
                 ,{ model: Category, required: false, attributes: ['name'] }
             ],            
             raw: true
         });
 
         products = products.map(p => {
-            const productId = p['ProductCategories.productId']; // Get the productId from associations
-            const categoryName=p['Category.name'];
-            return { url: p['ProductImages.url'], productId,categoryName, ...p }; // Include productId in the returned object
+            const productId = p['ProductCategories.productId'];
+            const categoryName=p['Categories.name'];
+            return { url: p['ProductImages.url'], productId,categoryName, ...p }; 
         });
 
     }

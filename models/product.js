@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/database');
-const ProductImages = require('../models/productimages'); 
-const Category = require('../models/category'); 
+const ProductImages = require('../models/productimages');
+const Category = require('../models/category');
 const ProductCategories = require('../models/productCategories');
 
 const Product = sequelize.define('Product', {
@@ -26,13 +26,10 @@ const Product = sequelize.define('Product', {
 }, {
 });
 
-// Product has many ProductImages
 Product.hasMany(ProductImages, { foreignKey: 'productId' });
-
 
 Product.hasMany(ProductCategories, { foreignKey: 'productId' });
 
-// // Product belongs to many Category through ProductCategories
-// Product.belongsToMany(Category, { through: 'ProductCategories' });
+Product.hasMany(Category, { foreignKey: 'id' });
 
 module.exports = Product;
