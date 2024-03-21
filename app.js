@@ -97,8 +97,6 @@ app.use((req , res, next) =>{
 app.listen(PORT, async () =>{
         try{
             await db.authenticate();
-            await Product.sync();
-            await ProductImage.sync();
             console.log(chalk.bgYellowBright(`Server is running on Port ${PORT}, Succssfully connected to Databsae`));
         }catch(e){
             console.log(chalk.bgRedBright(`Server is running on Port ${PORT}, Could not connected to Databsae`));
