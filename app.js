@@ -7,11 +7,10 @@ const hbs = require('hbs');
 const productRouter = require('./routes/product');
 const bodyParser = require('body-parser');
 const db = require('./utils/database');
-const Product = require('./models/product');
-const ProductImage = require('./models/productimages');
+const Category=require('./models/category');
 
 
-const Users = [];
+
 
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,10 +28,14 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 app.use('/products', productRouter);
 
-app.get('/', (req, response) => {
-    response.render('home', {
+app.get('/', async (req, res) => {
+    const categories = await Category.findAll({
+        attributes: ['name'] 
+    });
+    const categoryNames = categories.map(category => category.name); 
+    res.render('home', {
         title: 'HomePage All Users',
-        users: Users
+        categories: categoryNames 
     });
 });
 

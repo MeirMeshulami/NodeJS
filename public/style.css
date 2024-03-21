@@ -11,7 +11,15 @@
     display: flex;
     justify-content: center;
 }
-
+.sidebar{
+    color: white;
+    padding-top:80px;
+    text-align: center;
+}
+.sidebar ul{
+    list-style-type: none;
+    padding: 0;
+}
 .top-nav ul li a{
     display: block;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

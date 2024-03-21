@@ -1,12 +1,18 @@
 {{>header}}
+
 <h1>{{title}}</h1>
 
-<ul>
-  {{#each users}}
-    <li>firstName: {{this.firstName}}, userName: {{this.userName}}, email: {{this.email}}</li>
-    {{/each}} 
-</ul>
+<div class="ui visible sidebar inverted vertical menu ">
+  <h3>All Categories</h3>
+  <ul>
+    {{#each categories}}
+    <li><a href="#" class="item">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</div>
+<div class="pusher">
+  <!-- Site content here !-->
+</div>
 
-    {{!-- <img src="https://www.ivory.co.il/files/catalog/org/1706174584l84Is.webp" alt="computer" /> --}}
 
 {{>footer}}
