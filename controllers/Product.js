@@ -39,12 +39,12 @@ const getCategoryProducts= async(request, response) =>{
 
     let products = await Product.findAll({
         include: [
-            { model: Category, where: { name: nameOfCategory }, attributes: [] }, 
+            { model: Category, where: { name: nameOfCategory }, attributes: ['name'] }, 
             { model: ProductImages, required: false, attributes: ['url'] } 
         ],
         raw: true
     });
-    products = products.map(p =>({url: p['ProductImages.url'], ...p }));
+    products = products.map(p =>({url: p['ProductImages.url'],categoryName:p['Categories.name'] ,...p }));
     
     response.render('products/category', { products, title: `Products in ${nameOfCategory}` });
 }
