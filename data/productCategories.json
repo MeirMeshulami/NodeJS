@@ -46,5 +46,25 @@
     {
         "productId": 12,
         "categoryId": 8
+    },
+    {
+        "productId": 13,
+        "categoryId": 7
+    },
+    {
+        "productId": 14,
+        "categoryId": 6
+    },
+    {
+        "productId": 15,
+        "categoryId": 12
+    },
+    {
+        "productId": 16,
+        "categoryId": 13
+    },
+    {
+        "productId": 17,
+        "categoryId": 14
     }
 ]

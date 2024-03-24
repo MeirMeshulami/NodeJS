@@ -10,8 +10,9 @@ module.exports = {
      *
      * Example:
     */
-   
-    await queryInterface.bulkInsert('ProductCategories', productCategories, {});
+    const createdAt = new Date();
+    const updatedAt = new Date();
+    await queryInterface.bulkInsert('ProductCategories', productCategories.map(p => ({createdAt, updatedAt ,...p})), {});
 
   },
 

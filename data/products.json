@@ -72,4 +72,40 @@
   "description": "Compact printer combined fax Brother MFC-J1010DWZU. Print in vivid colors from anywhere in the home, via WLAN - conveniently from your PC, smartphone or tablet. With the 20-sheet automatic document feeder you can copy, fax or scan your documents quickly and easily.",
   "price": 495,
   "quantity": 35
-}]
+},
+{
+  "id": 13,
+  "name": "Delton C24 HiDef 1080P Webcam",
+  "description": "Computer Webcam, 2MP, 30 fps, HD Camera, Compatible with PC, Laptop, Desktop, and Games with USB Port for Remote Work, Video Conference and Teleconference.",
+  "price": 349,
+  "quantity": 45
+},
+{
+  "id": 14,
+  "name": "(2m/6.56ft) LED Strip Lights",
+  "description": "USB Powered, SMD 5050 Flexible LED Lights, RGB Cuttable LED Strip Lights with Remote for 40-60in TV Backlight Strip ,Monitor, Computer Case DIY,Game Room Home, Decoration.",
+  "price": 79,
+  "quantity": 80
+},
+{
+  "id": 15,
+  "name": "TP-Link Archer AX53 AX3000",
+  "description": "TP-Link Archer AX53 AX3000 WPA3 Dual Band Gigabit Wi-Fi 6.",
+  "price": 259,
+  "quantity": 15
+},
+{
+  "id": 16,
+  "name": "Dell PowerEdge R730",
+  "description": "8 x 2.5 Hot Plug E5-2650 V3 Ten Core 2.3Ghz 8GB H330.",
+  "price": 959,
+  "quantity":3 
+},
+{
+  "id": 17,
+  "name": "ASUS 24 (23.8 Viewable) VZ249QG1R",
+  "description": "Full HD, IPS, 75Hz, 1ms, Extreme Low Motion Blur, Speakers, FreeSync, Eye Care, VESA Mountable, Ultra-slim, DisplayPort, HDMI, Tilt Monitor.",
+  "price": 440,
+  "quantity": 17
+}
+]

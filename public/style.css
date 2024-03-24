@@ -14,11 +14,13 @@
 .sidebar{
     color: white;
     padding-top:80px;
-    text-align: center;
 }
 .sidebar ul{
     list-style-type: none;
     padding: 0;
+}
+.sidebar h3{
+    margin-left: 20px;
 }
 .top-nav ul li a{
     display: block;

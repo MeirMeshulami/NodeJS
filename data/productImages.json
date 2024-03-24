@@ -66,5 +66,25 @@
     "productId": 12,
     "images":["https://i.postimg.cc/SQB67ZK6/12-img1.webp",
               "https://i.postimg.cc/CxNb0Ss7/12-img2.webp"]
+  },
+  {
+    "productId": 13,
+    "images":["https://i.postimg.cc/NFcHPw3X/webcam.jpg"]
+  },
+  {
+    "productId": 14,
+    "images":["https://i.postimg.cc/sXSWc2Ny/led.jpg"]
+  },
+  {
+    "productId": 15,
+    "images":["https://i.postimg.cc/0NhmDSZc/router.webp"]
+  },
+  {
+    "productId": 16,
+    "images":["https://i.postimg.cc/zfyKy7wy/server.jpg"]
+  },
+  {
+    "productId": 17,
+    "images":["https://i.postimg.cc/jSgyqmfV/Monitor.jpg"]
   }
   ]

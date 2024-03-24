@@ -42,5 +42,17 @@
   {
     "id": 11,
       "name": "Power Supplies"
+  },
+  {
+    "id": 12,
+      "name": "Networking"
+  },
+  {
+    "id": 13,
+      "name": "Servers"
+  },
+  {
+    "id": 14,
+      "name": "Monitors"
   }
 ]

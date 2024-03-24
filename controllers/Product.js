@@ -11,7 +11,6 @@ const search = async (request, response) => {
     let products = [];
     const searchTerm = request.query.q;
     if (searchTerm !== undefined) {
-        // search is active
         products = await Product.findAll({
             where: {
                 name: {
@@ -33,6 +32,21 @@ const search = async (request, response) => {
 
     }
     response.render('products/search', {products, title: 'Search Products'});
+}
+
+const getCategoryProducts= async(request, response) =>{
+    const { nameOfCategory } = request.params;
+
+    let products = await Product.findAll({
+        include: [
+            { model: Category, where: { name: nameOfCategory }, attributes: [] }, 
+            { model: ProductImages, required: false, attributes: ['url'] } 
+        ],
+        raw: true
+    });
+    products = products.map(p =>({url: p['ProductImages.url'], ...p }));
+    
+    response.render('products/category', { products, title: `Products in ${nameOfCategory}` });
 }
 
 const getProducts = (request, response) => {
@@ -66,5 +80,6 @@ const singleProduct = async (request, response) => {
 module.exports = {
     singleProduct,
     getProducts,
+    getCategoryProducts,
     search
 }
