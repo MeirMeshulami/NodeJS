@@ -9,7 +9,7 @@ router.get('/:productId', ProductController.singleProduct);
 
 router.get('/category/:nameOfCategory', ProductController.getCategoryProducts);
 
-router.get('/', ProductController.getProducts);
+router.get('/', ProductController.getAllProducts);
 
 
 

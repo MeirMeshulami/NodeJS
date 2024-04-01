@@ -12,19 +12,20 @@ const Category = require('./models/category');
 
 
 
-
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Static js and css files location
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log(chalk.blueBright('Meshulami'));
+// Header and Footer partials
 hbs.registerPartials(__dirname + '/views/partials');
 
-
+// General routes - MVC model
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
 
-
+// Specific routes
 app.get('/', async (req, res) => {
     const categories = await Category.findAll({
         attributes: ['name']
@@ -36,14 +37,10 @@ app.get('/', async (req, res) => {
     });
 });
 
-
-
 app.get('/users', (req, res) => {
     console.log(chalk.blueBright('Users page'));
     res.render('users', { title: 'Users' });
 });
-
-
 
 app.get('/about', (req, res) => {
     console.log(chalk.blueBright('About page'));
@@ -52,6 +49,14 @@ app.get('/about', (req, res) => {
 
 app.use((req, res) => {
     res.render('404');
+});
+
+
+hbs.registerHelper('getProductImage',function(product){
+    if(product.ProductImages){
+        return `<img src="${product.ProductImages[0].url}" alt="${product.name}" />`;
+    }
+    return '';
 });
 
 app.listen(PORT, async () => {

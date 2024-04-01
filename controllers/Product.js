@@ -1,85 +1,75 @@
 const Product = require('../models/product');
 const ProductImages = require('../models/productimages');
-const Category = require('../models/category'); 
+const Category = require('../models/category');
 const sequelize = require('sequelize');
 
 
-const getRandomRating = () => {
-    return Math.floor(Math.random() * 5);
-}
-
 const search = async (request, response) => {
-    let products = [];
-    const searchTerm = request.query.q;
-    if (searchTerm !== undefined) {
-        products = await Product.findAll({
-            where: {
-                name: {
-                    [sequelize.Op.like]: `%${searchTerm}%`
+    try {
+        const searchTerm = request.query.q;
+        let products = [];
+        if (searchTerm !== undefined) {
+            products = await Product.findAll({
+                where: {
+                    name: {
+                        [sequelize.Op.like]: `%${searchTerm}%`
+                    },
                 },
-            },
-            include: [
-                { model: ProductImages, required: false, attributes: ['url'] }
-                ,{ model: Category, required: false, attributes: ['name'] }
-            ],            
-        });
-
-        // products = products.map(p => {
-        //     const productId = p['ProductCategories.productId'];
-        //     const categoryName=p['Categories.name'];
-        //     return { url: p['ProductImages.url'], productId,categoryName, ...p }; 
-        // });
-
+                include: [
+                    { model: ProductImages, required: false, attributes: ['url'] },
+                    { model: Category, required: false, attributes: ['name'] }
+                ],
+            });
+        }
+        response.render('products/search', { products, title: 'Search Products' });
+    } catch (error) {
+        console.error(error);
+        response.status(500).send('Internal Server Error');
     }
-    response.render('products/search', {products, title: 'Search Products'});
 }
 
-const getCategoryProducts= async(request, response) =>{
+const getCategoryProducts = async (request, response) => {
     const { nameOfCategory } = request.params;
 
     let products = await Product.findAll({
         include: [
-            { model: Category, where: { name: nameOfCategory }, attributes: ['name'] }, 
-            { model: ProductImages, required: false, attributes: ['url'] } 
+            { model: Category, where: { name: nameOfCategory }, attributes: ['name'] },
+            { model: ProductImages, required: false, attributes: ['url'] }
         ],
         raw: true
     });
-    products = products.map(p =>({url: p['ProductImages.url'],categoryName:p['Categories.name'] ,...p }));
-    
+    products = products.map(p => ({ url: p['ProductImages.url'], categoryName: p['Categories.name'], ...p }));
+
     response.render('products/category', { products, title: `Products in ${nameOfCategory}` });
 }
 
-const getProducts = (request, response) => {
+const getAllProducts = async (request, response) => {
 
-    Product.findAll()
-        .then(products => {
-            const ratedProducts = products.map(p => {
-                p.rating = getRandomRating();
-                return p;
-            })
-            response.render('products/all', { products: ratedProducts });
-
-        }).catch(err => {
-            response.render('404');
-        })
-
+    const products = await Product.findAll({
+        include: [{ model: ProductImages, required: false, attributes: ['url'] }]
+    });
+    response.render('products/all', { products, title: 'All Products' });
 
 }
 
 const singleProduct = async (request, response) => {
     const id = request.params.productId;
-    const product = await Product.findOne({ where: { id: id }, raw: true });
-    if (product) {
-        response.render('products/single', product);
-    } else {
-        response.render('404');
+    try {
+        const product = await Product.findOne({ where: { id: id }, raw: true });
+        if (product) {
+            response.render('products/single', product);
+        } else {
+            response.status(404).render('404');
+        }
+    } catch (error) {
+        console.error(error);
+        response.status(500).send('Internal Server Error');
     }
-
 }
 
 module.exports = {
     singleProduct,
-    getProducts,
+    getAllProducts,
     getCategoryProducts,
     search
 }

@@ -20,7 +20,7 @@ const authentication = async (req, res) => {
             userName: userName
         }
     });
-    if (!user || user.password != password) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.status(401).render('auth/login', { error: 'Invalid email or password' });
     }
     res.redirect('/');
@@ -35,13 +35,15 @@ const createUser = async (req, res) => {
         }
     });
     if (existingUser) {
-        return response.status(400).render('auth/register', { error: 'User with the same email or username already exists' });
+        return res.status(400).render('auth/register', { error: 'User with the same email or username already exists' });
     }
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     await User.create({
         name,
         userName,
         email,
-        password
+        password:hashedPassword
     });
     res.redirect('/');
 }
