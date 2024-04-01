@@ -14,7 +14,7 @@
   {{#each products}}
   <div class="card">
     <div class="image">
-      <img src="{{this.url}}" alt="{{this.name}}" />
+      {{{getProductImage this}}}
     </div>
 <div class="content">
     <a class="header">{{this.name}}</a>

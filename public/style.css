@@ -45,3 +45,9 @@
 .page-404 a{
     font-size: 2rem;
 }
+.container{
+    padding-top: 100px;
+}
+form h1{
+    text-align: center;
+}

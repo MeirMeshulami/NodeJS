@@ -1,8 +1,9 @@
 const Product = require('../models/product');
 const ProductImages = require('../models/productimages');
 const Category = require('../models/category'); 
-
 const sequelize = require('sequelize');
+
+
 const getRandomRating = () => {
     return Math.floor(Math.random() * 5);
 }
@@ -21,14 +22,13 @@ const search = async (request, response) => {
                 { model: ProductImages, required: false, attributes: ['url'] }
                 ,{ model: Category, required: false, attributes: ['name'] }
             ],            
-            raw: true
         });
 
-        products = products.map(p => {
-            const productId = p['ProductCategories.productId'];
-            const categoryName=p['Categories.name'];
-            return { url: p['ProductImages.url'], productId,categoryName, ...p }; 
-        });
+        // products = products.map(p => {
+        //     const productId = p['ProductCategories.productId'];
+        //     const categoryName=p['Categories.name'];
+        //     return { url: p['ProductImages.url'], productId,categoryName, ...p }; 
+        // });
 
     }
     response.render('products/search', {products, title: 'Search Products'});

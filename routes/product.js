@@ -1,21 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const ProductConroller = require('../controllers/Product');
-
-// to access to this route page...
-// /products/212a
+const ProductController = require('../controllers/Product');
 
 
-//  -> /products
-router.get('/search', ProductConroller.search);
+router.get('/search', ProductController.search);
 
-router.get('/:productId', ProductConroller.singleProduct);
+router.get('/:productId', ProductController.singleProduct);
 
-router.get('/category/:nameOfCategory', ProductConroller.getCategoryProducts);
+router.get('/category/:nameOfCategory', ProductController.getCategoryProducts);
 
-router.get('/', ProductConroller.getProducts);
+router.get('/', ProductController.getProducts);
 
-// 
 
 
 module.exports = router;

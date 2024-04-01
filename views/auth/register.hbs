@@ -1,9 +1,10 @@
-{{>header}}
+{{>header hideMenu='true'}}
 
-<form class="ui form" method="POST" action="/new-user"> 
+<form class="ui form" method="POST" action=""> 
+  <h1>Register</h1>
   <div class="field">
-    <label>First Name</label>
-    <input type="text" name="firstName" placeholder="First Name" />
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="Full Name" />
   </div>
   <div class="field">
     <label>UserName</label>
@@ -11,13 +12,14 @@
   </div>
   <div class="field">
     <label>Email</label>
-    <input type="email" name="email" placeholder="email" />
+    <input type="email" name="email" placeholder="Email" />
   </div>
    <div class="field">
     <label>Password</label>
     <input type="password" name="password" placeholder="Password" />
   </div>
   <button class="ui button" type="submit">Submit</button>
+  <p>Already have an account? <a href="/login">Login</a></p>
 </form>
 
 {{>footer}}
