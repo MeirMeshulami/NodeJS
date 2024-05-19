@@ -3,9 +3,20 @@ const hbs = require('hbs');
 
 
 
-hbs.registerHelper('getProductImage',function(product){
-    if(product.ProductImages){
-        return `<img src="${product.ProductImages.url[0]}" alt="${product.name}" />`;
+
+Handlebars.registerHelper('getProductImage', function(product) {
+    if (product.ProductImages && product.ProductImages.length > 0) {
+        return `<img src="${product.ProductImages[0].url}" alt="${product.name} Image" />`;
+    } else {
+        return `<img src="/path/to/placeholder/image.jpg" alt="Placeholder Image" />`;
     }
-    return '';
+});
+
+
+Handlebars.registerHelper('getCategoryName', function(product) {
+    if (product.Categories.name) {
+        return product.Categories.name;
+    } else {
+        return "No category";
+    }
 });

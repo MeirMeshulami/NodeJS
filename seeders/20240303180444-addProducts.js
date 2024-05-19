@@ -12,7 +12,7 @@ module.exports = {
     */
     const createdAt = new Date();
     const updatedAt = new Date();
-    await queryInterface.bulkInsert('products', products.map(p => ({createdAt, updatedAt ,...p})), {});
+    await queryInterface.bulkInsert('Products', products.map(p => ({createdAt, updatedAt ,...p})), {});
 
   },
 
@@ -23,6 +23,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-      await queryInterface.bulkDelete('products', null, {});
+      await queryInterface.bulkDelete('Products', null, {});
   }
 };

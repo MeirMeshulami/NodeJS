@@ -2,30 +2,28 @@ const Product = require('../models/product');
 const ProductImages = require('../models/productimages');
 const Category = require('../models/category');
 const sequelize = require('sequelize');
+const ProductCategories = require('../models/productCategories');
 
 
 const search = async (request, response) => {
-    try {
-        const searchTerm = request.query.q;
-        let products = [];
-        if (searchTerm !== undefined) {
-            products = await Product.findAll({
-                where: {
-                    name: {
-                        [sequelize.Op.like]: `%${searchTerm}%`
-                    },
+    const searchTerm = request.query.q;
+    let products = [];
+    if (searchTerm !== undefined) {
+        products = await Product.findAll({
+            where: {
+                name: {
+                    [sequelize.Op.like]: `%${searchTerm}%`
                 },
-                include: [
-                    { model: ProductImages, required: false, attributes: ['url'] },
-                    { model: Category, required: false, attributes: ['name'] }
-                ],
-            });
-        }
-        response.render('products/search', { products, title: 'Search Products' });
-    } catch (error) {
-        console.error(error);
-        response.status(500).send('Internal Server Error');
+            },
+            include: [
+                { model: ProductImages, required: false, attributes: ['url'] },
+                { model: Category, required: false, attributes: ['name'] }
+            ],
+            raw: true
+        });
     }
+    products = products.map(p => ({ url: p['ProductImages.url'], categoryName: p['Categories.name'], ...p }));
+    response.render('products/search', { products, title: 'Search Products' });
 }
 
 const getCategoryProducts = async (request, response) => {
@@ -45,12 +43,19 @@ const getCategoryProducts = async (request, response) => {
 
 const getAllProducts = async (request, response) => {
 
-    const products = await Product.findAll({
-        include: [{ model: ProductImages, required: false, attributes: ['url'] }]
+    let products = await Product.findAll({
+        include: [
+            { model: Category, required: false, attributes: ['name'] },
+            { model: ProductImages, required: false, attributes: ['url'] }
+        ],
+        raw: true
     });
+    products = products.map(p => ({ url: p['ProductImages.url'], categoryName: p['Categories.name'], ...p }));
+
     response.render('products/all', { products, title: 'All Products' });
 
 }
+
 
 const singleProduct = async (request, response) => {
     const id = request.params.productId;

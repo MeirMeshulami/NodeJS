@@ -19,7 +19,7 @@ module.exports = {
             data.push({productId, url, createdAt, updatedAt});
           }
     }
-    await queryInterface.bulkInsert('productimages', data, {});
+    await queryInterface.bulkInsert('ProductImages', data, {});
 
   },
 
@@ -30,5 +30,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('ProductImages', null, {});
   }
 };
