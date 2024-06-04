@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const Sequelize= require('sequelize');
+const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 
 
@@ -12,7 +12,7 @@ const renderLogin = (req, res) => {
     res.render('auth/login');
 }
 
-const authentication = async (req, res) => {
+const signIn = async (req, res) => {
     const { userName, password } = req.body;
 
     const user = await User.findOne({
@@ -23,10 +23,27 @@ const authentication = async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.status(401).render('auth/login', { error: 'Invalid email or password' });
     }
-    res.redirect('/');
+    req.session.isLoggedIn = true;
+    req.session.user = user;
+    req.session.save(err => {
+        if (err) {
+            console.error('Session save error:', err);
+            return res.status(500).render('auth/login', { error: 'An error occurred. Please try again.' });
+        }
+        res.redirect('/');
+    });
+    //res.redirect('/');
+
 }
 
-const createUser = async (req, res) => {
+// const verifyLoginAccess=(req,res)=>{
+//     if(!req.session.isLoggedIn){
+//         res.redirect('/login');
+//         res.end();
+//     }
+// }
+
+const signUp = async (req, res) => {
     const { name, userName, email, password } = req.body;
 
     const existingUser = await User.findOne({
@@ -43,7 +60,7 @@ const createUser = async (req, res) => {
         name,
         userName,
         email,
-        password:hashedPassword
+        password: hashedPassword
     });
     res.redirect('/');
 }
@@ -53,6 +70,7 @@ const createUser = async (req, res) => {
 module.exports = {
     renderRegister,
     renderLogin,
-    authentication,
-    createUser
+    signIn,
+    signUp
+    //verifyLoginAccess
 }

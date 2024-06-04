@@ -9,7 +9,22 @@ const authRouter = require('./routes/auth');
 const bodyParser = require('body-parser');
 const db = require('./utils/database');
 const Category = require('./models/category');
+const sequelize = require('./utils/database');
+const session = require('express-session');
+const SequelizeStore= require('connect-session-sequelize')(session.Store);
 
+var sessionStore = new SequelizeStore({
+    db: db,
+    checkExpirationInterval: 15 * 60 * 1000,
+    expiration: 7 * 24 * 60 * 60 * 1000
+ });
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false, 
+    saveUninitialized: false,
+    store: sessionStore
+  }));
 
 
 app.set('view engine', 'hbs');
@@ -22,9 +37,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(__dirname + '/views/partials');
 
 // General routes - MVC model
-app.use('/products', productRouter);
 app.use('/auth', authRouter);
+app.use((req, res, next) => {
+    if (!req.session.isLoggedIn) {
+        res.redirect('/auth/login');
+    } else {
+        next();
+    }
+});
 
+
+app.use('/products', productRouter);
 // Specific routes
 app.get('/', async (req, res) => {
     const categories = await Category.findAll({
@@ -52,8 +75,8 @@ app.use((req, res) => {
 });
 
 
-hbs.registerHelper('getProductImage',function(product){
-    if(product.ProductImages){
+hbs.registerHelper('getProductImage', function (product) {
+    if (product.ProductImages) {
         return `<img src="${product.ProductImages[0].url}" alt="${product.name}" />`;
     }
     return '';
@@ -62,6 +85,7 @@ hbs.registerHelper('getProductImage',function(product){
 app.listen(PORT, async () => {
     try {
         await db.authenticate();
+        sessionStore.sync();
         console.log(chalk.bgYellowBright(`Server is running on Port ${PORT}, Succssfully connected to Databsae`));
     } catch (e) {
         console.log(chalk.bgRedBright(`Server is running on Port ${PORT}, Could not connected to Databsae`));
